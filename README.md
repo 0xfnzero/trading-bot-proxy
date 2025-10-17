@@ -1,86 +1,123 @@
-# 🚀 Solana DEX 交易代理系统使用说明
+<div align="center">
+    <h1>🚀 Solana DEX Trading Bot Proxy</h1>
+    <h3><em>High-Performance Solana DEX Automated Trading Proxy System</em></h3>
+</div>
 
-## 📋 概述
-本文档介绍如何配置和使用 Solana DEX 交易代理系统。
+<p align="center">
+    <strong>Professional trading system built with Rust and TypeScript, supporting real-time data subscription and automated trading execution for major DEXs like PumpFun, PumpSwap, and Meteora DAMM V2</strong>
+</p>
+
+<p align="center">
+    <a href="https://github.com/0xfnzero/trading-bot-proxy">
+        <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License">
+    </a>
+    <a href="https://github.com/0xfnzero/trading-bot-proxy">
+        <img src="https://img.shields.io/github/stars/0xfnzero/trading-bot-proxy?style=social" alt="GitHub stars">
+    </a>
+    <a href="https://github.com/0xfnzero/trading-bot-proxy/network">
+        <img src="https://img.shields.io/github/forks/0xfnzero/trading-bot-proxy?style=social" alt="GitHub forks">
+    </a>
+</p>
+
+<p align="center">
+    <img src="https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white" alt="Rust">
+    <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+    <img src="https://img.shields.io/badge/Solana-9945FF?style=for-the-badge&logo=solana&logoColor=white" alt="Solana">
+    <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" alt="Redis">
+</p>
+
+<p align="center">
+    <a href="https://github.com/0xfnzero/trading-bot-proxy/blob/main/README_CN.md">中文</a> |
+    <a href="https://github.com/0xfnzero/trading-bot-proxy/blob/main/README.md">English</a> |
+    <a href="https://fnzero.dev/">Website</a> |
+    <a href="https://t.me/fnzero_group">Telegram</a> |
+    <a href="https://discord.gg/vuazbGkqQE">Discord</a>
+</p>
 
 ---
 
-## 📁 项目结构
+## 📋 Overview
 
-### 1. 🦀 交易代理服务端
-**部署包：** `deploy_package_server.tar.gz`
+Solana DEX automated trading system consisting of a Rust server and TypeScript client, supporting DEXs like PumpFun, PumpSwap, and Meteora DAMM V2.
 
-- 高性能 Rust 服务端，提供 HTTP API 交易接口
-- 支持 PumpFun、PumpSwap 等主流 DEX
-- 通过 Unix Socket 推送实时交易事件
-- 配置文件：`deploy_package_server/config/app.toml`
+## 📁 Project Structure
 
-### 2. 📱 交易机器人客户端
-**项目位置：** `trading-bot-client/`
+### Trading Server (Rust)
+- `trading-bot-server-linux/` - Linux version
+- `trading-bot-server-mac/` - macOS version
+- Configuration file: `config/app.toml`
 
-详细的客户端功能说明、配置方法和使用示例，请参考：[trading-bot-client/README.md](trading-bot-client/README.md)
+### Trading Client (TypeScript)
+- `trading-bot-client/` - Automated trading client
+- Detailed documentation: [trading-bot-client/README.md](trading-bot-client/README.md)
 
----
+## 🚀 Quick Start
 
-## 🚀 启动步骤
+### 1. Start the Server
 
-### 前置条件
-1. ✅ **解压部署包**：解压 `deploy_package_server.tar.gz`
-2. ✅ **配置服务端**：编辑 `deploy_package_server/config/app.toml`
-3. ✅ **启动 Redis**：确保 Redis 服务正常运行
-4. ✅ **配置客户端**：参考 trading-bot-client/README.md
-
-### 1. 解压并配置服务端
-
+**Linux:**
 ```bash
-# 解压部署包
-tar -xzf deploy_package_server.tar.gz
-
-# 进入部署目录
-cd deploy_package_server
-
-# 编辑配置文件
-vim config/app.toml
+cd trading-bot-server-linux
+vim config/app.toml  # Configure private key and RPC address
+chmod +x trading-bot-server
+nohup ./trading-bot-server > output.log 2>&1 &
 ```
 
-### 2. 启动服务端
-
+**macOS:**
 ```bash
-# 启动服务端
-sudo nohup ./trading-bot-server > output.log 2>&1 &
+cd trading-bot-server-mac
+vim config/app.toml  # Configure private key and RPC address
+chmod +x trading-bot-server
+nohup ./trading-bot-server > output.log 2>&1 &
 ```
 
-**服务端启动后：**
-- HTTP API: `http://localhost:8080`
-- Unix Socket: `/tmp/parser_proxy.sock`
-- 健康检查: `GET http://localhost:8080/health`
+Server default port: `http://localhost:8080`
 
-### 3. 启动客户端
+### 2. Start the Client
 
-客户端详细启动方法请参考：[trading-bot-client/README.md](trading-bot-client/README.md)
+```bash
+cd trading-bot-client
+npm install
+cp .env.sample .env
+vim .env  # Configure environment variables
+npm run dev
+```
+
+For detailed instructions, please refer to: [trading-bot-client/README.md](trading-bot-client/README.md)
+
+## ⚙️ Important: Enable Protocol and Event Subscription
+
+The server needs to set the corresponding protocols and events to `true` in `config/app.toml` to subscribe to data:
+
+```toml
+[protocols]
+pumpfun = true  # Enable protocol as needed
+
+[events]
+pumpfun_trade = true  # Enable events as needed
+```
+
+**Note:** Only protocols and events set to `true` will be subscribed to and pushed to the client.
+
+## 🔧 Common Commands
+
+```bash
+# View logs
+tail -f output.log
+
+# Stop service
+ps aux | grep trading-bot-server | grep -v grep | awk '{print $2}' | xargs kill
+
+# Health check
+curl http://localhost:8080/health
+```
+
+## ⚠️ Important Notes
+
+- Private Key Security: Keep your private keys in the configuration file secure
+- Recommended to use professional RPC nodes for better performance
+- Regularly check log files
 
 ---
 
-## ⚙️ 服务端配置
-
-编辑 `deploy_package_server/config/app.toml` 文件，配置钱包私钥和 RPC 地址等必要参数。
-
----
-
-## 🔧 API 使用
-
-服务端提供以下 API 接口：
-- `GET /health` - 健康检查
-- `POST /api/buy` - 买入交易
-- `POST /api/sell` - 卖出交易
-
-详细的 API 使用说明请参考：[trading-bot-client/README.md](trading-bot-client/README.md)
-
----
-
-## ⚠️ 重要提醒
-
-- 启动前务必确保配置文件已正确设置
-- 建议定期检查 `deploy_package_server/output.log` 日志文件
-- 如需停止服务，请使用 `ps` 命令查找进程ID后使用 `kill` 命令
-- 详细的故障排除和日志查看方法请参考：[trading-bot-client/README.md](trading-bot-client/README.md)
+Detailed documentation: [trading-bot-client/README.md](trading-bot-client/README.md)
