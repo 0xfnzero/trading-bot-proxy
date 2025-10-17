@@ -46,7 +46,7 @@
 - ✅ **无需区块链专业知识**：专注于交易策略，而非 Solana 交易机制
 - ✅ **语言无关**：使用任何编程语言开发你的交易机器人（Python、JavaScript、Go 等）
 - ✅ **预构建 DEX 集成**：PumpFun、PumpSwap、Meteora DAMM V2 协议已集成
-- ✅ **简化 API**：REST API + WebSocket 便于集成
+- ✅ **简化 API**：Unix Socket（事件）+ HTTP API（命令）便于集成
 
 **Rust 性能优势**
 - ⚡ **超低延迟**：Rust 的零成本抽象确保最小开销
@@ -128,9 +128,9 @@
 - 配置文件：`config/app.toml`
 
 ### 交易客户端（TypeScript 参考实现）
-- `trading-bot-client/` - 全功能 TypeScript 客户端示例
+- `trading-bot-ts/` - 全功能 TypeScript 客户端示例
 - 展示最佳实践和集成模式
-- 详细说明：[trading-bot-client/README.md](trading-bot-client/README.md)
+- 详细说明：[trading-bot-ts/README.md](trading-bot-ts/README.md)
 
 ## 🚀 快速开始
 
@@ -157,14 +157,14 @@ nohup ./trading-bot-server > output.log 2>&1 &
 ### 2. 启动客户端
 
 ```bash
-cd trading-bot-client
+cd trading-bot-ts
 npm install
 cp .env.sample .env
 vim .env  # 配置环境变量
 npm run dev
 ```
 
-详细说明请参考：[trading-bot-client/README.md](trading-bot-client/README.md)
+详细说明请参考：[trading-bot-ts/README.md](trading-bot-ts/README.md)
 
 ## ⚙️ 重要：启用协议和事件订阅
 
@@ -276,6 +276,6 @@ client.on('data', (data) => {
 ---
 
 **需要帮助？**
-- 详细客户端文档：[trading-bot-client/README.md](trading-bot-client/README.md)
+- 详细客户端文档：[trading-bot-ts/README.md](trading-bot-ts/README.md)
 - Telegram 社区：[加入讨论](https://t.me/fnzero_group)
 - Discord 服务器：[获取支持](https://discord.gg/vuazbGkqQE)

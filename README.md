@@ -46,7 +46,7 @@
 - ✅ **No Blockchain Expertise Required**: Focus on trading strategy, not Solana transaction mechanics
 - ✅ **Language Agnostic**: Develop your bot in any programming language (Python, JavaScript, Go, etc.)
 - ✅ **Pre-built DEX Integration**: PumpFun, PumpSwap, Meteora DAMM V2 protocols already integrated
-- ✅ **Simplified API**: REST API + WebSocket for easy integration
+- ✅ **Simplified API**: Unix Socket (events) + HTTP API (commands) for easy integration
 
 **Rust Performance Benefits**
 - ⚡ **Ultra-Low Latency**: Rust's zero-cost abstractions ensure minimal overhead
@@ -128,9 +128,9 @@
 - Configuration: `config/app.toml`
 
 ### Trading Client (TypeScript Reference Implementation)
-- `trading-bot-client/` - Full-featured TypeScript client example
+- `trading-bot-ts/` - Full-featured TypeScript client example
 - Demonstrates best practices and integration patterns
-- Detailed documentation: [trading-bot-client/README.md](trading-bot-client/README.md)
+- Detailed documentation: [trading-bot-ts/README.md](trading-bot-ts/README.md)
 
 ## 🚀 Quick Start
 
@@ -157,14 +157,14 @@ Server default port: `http://localhost:8080`
 ### 2. Start the Client
 
 ```bash
-cd trading-bot-client
+cd trading-bot-ts
 npm install
 cp .env.sample .env
 vim .env  # Configure environment variables
 npm run dev
 ```
 
-For detailed instructions, please refer to: [trading-bot-client/README.md](trading-bot-client/README.md)
+For detailed instructions, please refer to: [trading-bot-ts/README.md](trading-bot-ts/README.md)
 
 ## ⚙️ Important: Enable Protocol and Event Subscription
 
@@ -276,6 +276,6 @@ client.on('data', (data) => {
 ---
 
 **Need Help?**
-- Detailed client documentation: [trading-bot-client/README.md](trading-bot-client/README.md)
+- Detailed client documentation: [trading-bot-ts/README.md](trading-bot-ts/README.md)
 - Telegram Community: [Join Discussion](https://t.me/fnzero_group)
 - Discord Server: [Get Support](https://discord.gg/vuazbGkqQE)
