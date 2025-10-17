@@ -32,12 +32,12 @@ region = "NewYork"
 # 启用的服务提供商列表
 [[swqos.enabled_providers]]
 provider = "Astralane"
-api_token = ""
+api_token = "2fnzetqRX2KXNKKLf7dMS0rW08I6pH6lKP8hnJDXe3U8oqvF7clcanTbavIBrt0U"
 enabled = false
 
 [[swqos.enabled_providers]]
 provider = "BlockRazor"
-api_token = ""
+api_token = "H5RkBRs4cEOxHWxuX3XkQq3iJt4UBeSnUOlLiRSFtpPwgHXRzSRD7A6U5c1D2nSLnTWmEmo7rMxUySl6L8cLFYLScRkwxRiA"
 enabled = false
 
 [[swqos.enabled_providers]]
@@ -62,12 +62,12 @@ enabled = false
 
 [[swqos.enabled_providers]]
 provider = "Temporal"
-api_token = ""
+api_token = "298b5025-d944-4584-ab1c-91872a055323"
 enabled = false
 
 [[swqos.enabled_providers]]
 provider = "FlashBlock"
-api_token = ""  # FLASHBLOCK_API_TOKEN
+api_token = "79a45229e1334596"  # FLASHBLOCK_API_TOKEN
 enabled = false
 
 [[swqos.enabled_providers]]
