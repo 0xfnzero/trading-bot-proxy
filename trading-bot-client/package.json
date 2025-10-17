@@ -1,0 +1,40 @@
+{
+  "name": "trading-bot-client",
+  "version": "1.0.0",
+  "description": "A TypeScript project",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "watch": "tsc --watch",
+    "clean": "rm -rf dist",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix"
+  },
+  "keywords": [
+    "typescript",
+    "node"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@solana/spl-token": "^0.4.14",
+    "@solana/web3.js": "^1.95.8",
+    "@types/bs58": "^4.0.4",
+    "@types/protobufjs": "^6.0.0",
+    "@types/redis": "^4.0.10",
+    "axios": "^1.6.0",
+    "bs58": "^6.0.0",
+    "dotenv": "^16.3.0",
+    "protobufjs": "^7.5.4",
+    "redis": "^5.8.3",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/ws": "^8.5.13",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.0"
+  }
+}
