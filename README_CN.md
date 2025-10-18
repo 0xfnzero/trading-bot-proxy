@@ -140,16 +140,16 @@
 ```bash
 cd trading-bot-server-linux
 vim config/app.toml  # 配置私钥和 RPC 地址
-chmod +x trading-bot-server
-nohup ./trading-bot-server > output.log 2>&1 &
+chmod +x trading-bot-proxy
+nohup ./trading-bot-proxy > output.log 2>&1 &
 ```
 
 **macOS：**
 ```bash
 cd trading-bot-server-mac
 vim config/app.toml  # 配置私钥和 RPC 地址
-chmod +x trading-bot-server
-nohup ./trading-bot-server > output.log 2>&1 &
+chmod +x trading-bot-proxy
+nohup ./trading-bot-proxy > output.log 2>&1 &
 ```
 
 服务端默认端口：`http://localhost:8080`
