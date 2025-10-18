@@ -138,7 +138,7 @@
 
 **Linux：**
 ```bash
-cd trading-bot-server-linux
+cd trading-bot-proxy-linux
 vim config/app.toml  # 配置私钥和 RPC 地址
 chmod +x trading-bot-proxy
 nohup ./trading-bot-proxy > output.log 2>&1 &
@@ -146,7 +146,7 @@ nohup ./trading-bot-proxy > output.log 2>&1 &
 
 **macOS：**
 ```bash
-cd trading-bot-server-mac
+cd trading-bot-proxy-mac
 vim config/app.toml  # 配置私钥和 RPC 地址
 chmod +x trading-bot-proxy
 nohup ./trading-bot-proxy > output.log 2>&1 &
@@ -187,7 +187,7 @@ pumpfun_trade = true  # 根据需要启用事件
 tail -f output.log
 
 # 停止服务
-ps aux | grep trading-bot-server | grep -v grep | awk '{print $2}' | xargs kill
+ps aux | grep trading-bot-proxy | grep -v grep | awk '{print $2}' | xargs kill
 
 # 健康检查
 curl http://localhost:8080/health
