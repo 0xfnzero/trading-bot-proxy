@@ -260,28 +260,11 @@ curl http://localhost:8080/health
 
 ### Integration Example
 
-**JavaScript Strategy Bot**
-```javascript
-const net = require('net');
-const axios = require('axios');
-const protobuf = require('protobufjs');
-
-// Connect to Unix Socket for real-time events
-const client = net.createConnection('/tmp/trading-bot.sock');
-
-client.on('data', (data) => {
-    // Decode Protobuf message
-    const event = decodeProtobuf(data);
-
-    if (shouldTrade(event)) {
-        // Execute trade via HTTP API
-        axios.post('http://localhost:8080/api/pumpswap/buy', {
-            mint: event.mint,
-            sol_amount: 0.05
-        });
-    }
-});
-```
+For complete integration examples, please refer to the [trading-bot-ts](trading-bot-ts/) directory, which contains a detailed TypeScript client implementation demonstrating:
+- How to subscribe to event streams via Unix Socket
+- How to parse event messages using Protobuf
+- How to execute trading operations via HTTP API
+- How to implement complete trading strategy logic
 
 ## ⚠️ Important Notes
 

@@ -260,28 +260,11 @@ curl http://localhost:8080/health
 
 ### 集成示例
 
-**JavaScript 策略机器人**
-```javascript
-const net = require('net');
-const axios = require('axios');
-const protobuf = require('protobufjs');
-
-// 连接到 Unix Socket 接收实时事件
-const client = net.createConnection('/tmp/trading-bot.sock');
-
-client.on('data', (data) => {
-    // 解码 Protobuf 消息
-    const event = decodeProtobuf(data);
-
-    if (shouldTrade(event)) {
-        // 通过 HTTP API 执行交易
-        axios.post('http://localhost:8080/api/pumpswap/buy', {
-            mint: event.mint,
-            sol_amount: 0.05
-        });
-    }
-});
-```
+完整的集成示例请参考 [trading-bot-ts](trading-bot-ts/) 目录，其中包含了详细的 TypeScript 客户端实现，展示了如何：
+- 通过 Unix Socket 订阅事件流
+- 使用 Protobuf 解析事件消息
+- 通过 HTTP API 执行交易操作
+- 实现完整的交易策略逻辑
 
 ## ⚠️ 注意事项
 
