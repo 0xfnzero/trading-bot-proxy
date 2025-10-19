@@ -132,6 +132,65 @@
 - 展示最佳实践和集成模式
 - 详细说明：[trading-bot-ts/README.md](trading-bot-ts/README.md)
 
+## 📦 前置要求：Git LFS 配置
+
+本项目使用 **Git LFS (Large File Storage)** 来管理二进制文件（trading-bot-proxy 可执行文件）。在克隆仓库之前，您必须先安装 Git LFS 才能正确下载这些文件。
+
+### 安装 Git LFS
+
+**macOS：**
+```bash
+brew install git-lfs
+```
+
+**Ubuntu/Debian：**
+```bash
+sudo apt-get install git-lfs
+```
+
+**CentOS/RHEL：**
+```bash
+sudo yum install git-lfs
+```
+
+**Windows：**
+- 从 [git-lfs.github.com](https://git-lfs.github.com/) 下载安装
+- 或使用 chocolatey：`choco install git-lfs`
+
+### 初始化 Git LFS
+
+安装完成后，运行一次（全局生效）：
+```bash
+git lfs install
+```
+
+### 克隆仓库
+
+**首次克隆（推荐方式）：**
+```bash
+git clone https://github.com/0xfnzero/trading-bot-proxy.git
+cd trading-bot-proxy
+```
+
+**已经克隆但未安装 Git LFS？**
+
+如果您在安装 Git LFS 之前就克隆了仓库，二进制文件可能没有正确下载。通过以下方式修复：
+```bash
+git lfs install
+git lfs pull
+```
+
+### 验证 Git LFS 文件
+
+检查二进制文件是否正确下载：
+```bash
+# 二进制文件应该在 10-100MB 左右，而不是只有几 KB
+ls -lh trading-bot-proxy-mac/trading-bot-proxy
+ls -lh trading-bot-proxy-linux/trading-bot-proxy
+```
+
+如果文件非常小（< 1KB），说明只是指针文件。运行 `git lfs pull` 来下载实际的二进制文件。
+
 ## 🚀 快速开始
 
 ### 1. 启动服务端
