@@ -132,88 +132,56 @@
 - Demonstrates best practices and integration patterns
 - Detailed documentation: [trading-bot-ts/README.md](trading-bot-ts/README.md)
 
-## 📦 Prerequisites: Git LFS Setup
-
-This project uses **Git LFS (Large File Storage)** to manage binary files (trading-bot-proxy executables). You must install Git LFS before cloning the repository to properly download these files.
-
-### Install Git LFS
-
-**macOS:**
-```bash
-brew install git-lfs
-```
-
-**Ubuntu/Debian:**
-```bash
-sudo apt-get install git-lfs
-```
-
-**CentOS/RHEL:**
-```bash
-sudo yum install git-lfs
-```
-
-**Windows:**
-- Download from [git-lfs.github.com](https://git-lfs.github.com/)
-- Or use chocolatey: `choco install git-lfs`
-
-### Initialize Git LFS
-
-After installation, run this once:
-```bash
-git lfs install
-```
-
-### Clone the Repository
-
-**New Clone (Recommended):**
-```bash
-git clone https://github.com/0xfnzero/trading-bot-proxy.git
-cd trading-bot-proxy
-```
-
-**Already Cloned Without Git LFS?**
-
-If you cloned the repository before installing Git LFS, the binary files may not have been downloaded correctly. Fix this by:
-```bash
-git lfs install
-git lfs pull
-```
-
-### Verify Git LFS Files
-
-Check if binary files were downloaded correctly:
-```bash
-# Binary files should be around 10-100MB, not just a few KB
-ls -lh trading-bot-proxy-mac/trading-bot-proxy
-ls -lh trading-bot-proxy-linux/trading-bot-proxy
-```
-
-If the files are very small (< 1KB), they're just pointer files. Run `git lfs pull` to download the actual binaries.
-
 ## 🚀 Quick Start
 
-### 1. Start the Server
+### 1. Download and Extract
 
 **Linux:**
 ```bash
+# Download the Linux version
+wget https://github.com/0xfnzero/trading-bot-proxy/releases/download/v1.0/trading-bot-proxy-linux.tar.bz2
+
+# Extract the archive
+tar -xjf trading-bot-proxy-linux.tar.bz2
+
+# Navigate to the directory
 cd trading-bot-proxy-linux
+```
+
+**macOS:**
+```bash
+# Download the macOS version
+wget https://github.com/0xfnzero/trading-bot-proxy/releases/download/v1.0/trading-bot-proxy-mac.tar.bz2
+
+# Extract the archive
+tar -xjf trading-bot-proxy-mac.tar.bz2
+
+# Navigate to the directory
+cd trading-bot-proxy-mac
+```
+
+### 2. Configure and Start the Server
+
+**Configure:**
+```bash
 vim config/app.toml  # Configure private key and RPC address
+```
+
+**Linux:**
+```bash
 chmod +x trading-bot-proxy
 nohup ./trading-bot-proxy > output.log 2>&1 &
 ```
 
 **macOS:**
 ```bash
-cd trading-bot-proxy-mac
-vim config/app.toml  # Configure private key and RPC address
 chmod +x trading-bot-proxy
 nohup ./trading-bot-proxy > output.log 2>&1 &
 ```
 
 Server default port: `http://localhost:8080`
 
-### 2. Start the Client
+### 3. Start the Client
 
 ```bash
 cd trading-bot-ts
