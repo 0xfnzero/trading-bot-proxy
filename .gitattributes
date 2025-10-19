@@ -1,2 +1,2 @@
-trading-bot-server-linux/trading-bot-server filter=lfs diff=lfs merge=lfs -text
-trading-bot-server-mac/trading-bot-server filter=lfs diff=lfs merge=lfs -text
+trading-bot-proxy-linux/trading-bot-proxy filter=lfs diff=lfs merge=lfs -text
+trading-bot-proxy-mac/trading-bot-proxy filter=lfs diff=lfs merge=lfs -text
